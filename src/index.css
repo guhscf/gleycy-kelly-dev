@@ -15,7 +15,10 @@
   padding: 0;
 }
 
-html {
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
   scroll-behavior: smooth;
 }
 
@@ -23,7 +26,6 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--azul-escuro);
   color: #fff;
-  overflow-x: hidden;
 }
 
 main.main-content {
@@ -59,7 +61,6 @@ h1, h2, h3 {
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Logo e texto */
 .logo-container {
   display: flex;
   align-items: center;
@@ -161,6 +162,7 @@ h1, h2, h3 {
   .nav-links {
     flex-direction: column;
     gap: 15px;
+    width: 100%;
   }
 
   .ligue-btn {
@@ -176,7 +178,6 @@ h1, h2, h3 {
   .navbar-logo {
     height: 50px;
   }
-
   .navbar-text {
     display: none;
   }
@@ -192,6 +193,8 @@ section {
   text-align: center;
   transition: background-color 0.6s ease;
   position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* Fundos alternados */
@@ -213,15 +216,9 @@ section {
   z-index: -1;
 }
 
-#sobre {
-  background-color: var(--azul-claro);
-}
-#atuacao {
-  background-color: var(--azul-escuro);
-}
-#contato {
-  background-color: var(--azul-claro);
-}
+#sobre { background-color: var(--azul-claro); }
+#atuacao { background-color: var(--azul-escuro); }
+#contato { background-color: var(--azul-claro); }
 
 /* ====== ANIMAÇÃO DE ENTRADA ====== */
 .fade-section {
@@ -247,15 +244,15 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh; /* 👈 deixa o conteúdo centralizado verticalmente */
+  min-height: 90vh;
   text-align: center;
 }
 
 .home-logo {
   width: 250px;
   height: auto;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 15px; /* reduzido */
+  margin-top: 0;
   filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4));
   animation: fadeInLogo 1.5s ease-in-out;
 }
@@ -282,7 +279,7 @@ section {
 .home p {
   font-size: 1.1rem;
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   color: var(--texto-claro);
 }
 
@@ -327,6 +324,117 @@ section {
   margin-bottom: 20px;
 }
 
+/* ====== SOBRE ====== */
+.sobre {
+  background-color: var(--azul-claro);
+  padding: 80px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.sobre-container {
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.sobre-texto {
+  flex: 1;
+  text-align: left;
+}
+
+.sobre-texto h2 {
+  color: var(--dourado);
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.sobre-texto p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--texto-claro);
+  margin-bottom: 20px;
+}
+
+.sobre-imagem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobre-foto {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--dourado);
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sobre-foto:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(200, 161, 62, 0.3);
+}
+
+/* ====== RESPONSIVIDADE SOBRE ====== */
+@media (max-width: 900px) {
+  .sobre-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .sobre-texto {
+    text-align: center;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .sobre-texto h2 {
+    text-align: center;
+  }
+
+  .sobre-foto {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre {
+    padding: 60px 20px;
+  }
+
+  .sobre-container {
+    gap: 20px;
+  }
+
+  .sobre-texto {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .sobre-foto {
+    max-width: 250px;
+  }
+
+  .sobre-texto h2 {
+    font-size: 1.6rem;
+  }
+
+  .sobre-texto p {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
 .atuacao {
   background-color: var(--azul-escuro);
   padding: 80px 40px;
@@ -340,25 +448,18 @@ section {
 }
 
 .atuacao h2 {
-  color: var(--dourado);
-  font-size: 2rem;
-  margin-bottom: 25px;
   text-align: center;
 }
 
 .atuacao p {
-  color: var(--texto-claro);
-  font-size: 1.05rem;
-  line-height: 1.9;
-  margin-bottom: 20px;
   text-align: justify;
+  line-height: 1.9;
 }
 
 .atuacao .highlight {
   color: var(--dourado);
   font-weight: 600;
 }
-
 
 /* ====== FOOTER ====== */
 .footer {
@@ -387,13 +488,22 @@ section {
 
 /* ====== RESPONSIVIDADE ====== */
 @media (max-width: 768px) {
+  section {
+    padding: 60px 20px;
+  }
+
+  .navbar {
+    padding: 10px 20px;
+  }
+
   .home-logo {
     width: 180px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
   }
 
   .home h1 {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
   }
 
   .home p {
@@ -402,9 +512,28 @@ section {
 
   .whatsapp-btn {
     width: 90%;
+    padding: 14px 10px;
   }
 
   .sobre, .atuacao, .contato {
     padding: 40px 20px;
+  }
+
+  .navbar-logo {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-logo {
+    width: 150px;
+  }
+
+  .navbar {
+    padding: 8px 15px;
+  }
+
+  .menu-toggle {
+    font-size: 1.6rem;
   }
 }
